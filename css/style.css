@@ -1,44 +1,108 @@
+/*Variables de color*/
+:root {
+  --color-bg: #fff;
+  --color-text: #111;
+  --color-accent: #ff7a00;
+  --color-on-accent: #fff;
+  --color-border: #ddd;
+  /*Variable de offset del header*/
+  --header-offset: 96px;
+}
+
 * {
   box-sizing: border-box;
 }
+html {
+  /*scroll-snap-type: y mandatory;*/
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
+}
+html:has(.site-header.is-hidden) {
+  scroll-padding-top: 0px;
+}
+
 body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
   line-height: 1.5;
-  height: 100vh;
-  overflow: hidden;
 }
 header {
+  left: 0;
+  right: 0;
+  width: 100%;
   padding: 16px;
-  border-bottom: 1px solid #ddd;
-  position: fixed;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+
   top: 0;
   z-index: 1000;
-  background: white; /* luego lo pasamos a variables para modo oscuro */
+  background: color-mix(in oklab, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
+.site-header {
+  transition: transform 180ms ease;
+  will-change: transform;
+}
+
+.site-header.is-hidden {
+  transform: translateY(-110%);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
 nav a {
-  margin-right: 12px;
   text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--color-text);
 }
+
+nav a:hover {
+  background: color-mix(in oklab, var(--color-accent) 12%, transparent);
+}
+nav a:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 4px;
+}
+nav a.is-active {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
 main {
   max-width: 1200px;
   margin: auto;
-  padding-top: 57px;
-  overflow-y: auto;
-  scroll-snap-type: y proximity;
-  height: 100vh;
-  height: 100svh;
-  scroll-padding-top: 57px
 }
+
 section {
   scroll-snap-align: start;
   min-height: 100vh;
-  min-height: 100svh;
+  min-height: 100dvh;
   padding-block: 0px;
+
+  padding-top: 20px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
+}
+
+/*Preferencias de usuario*/
+@media (prefers-reduced-motion: reduce) {
+  header {
+    backdrop-filter: none;
+  }
 }
