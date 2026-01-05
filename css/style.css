@@ -5,10 +5,16 @@ body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
   line-height: 1.5;
+  height: 100vh;
+  overflow: hidden;
 }
 header {
   padding: 16px;
   border-bottom: 1px solid #ddd;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: white; /* luego lo pasamos a variables para modo oscuro */
 }
 nav a {
   margin-right: 12px;
@@ -17,8 +23,20 @@ nav a {
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 57px 16px;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  height: 100vh; /* fallback */
+  height: 100svh;
+  scroll-padding-top: 57px
 }
+section {
+  scroll-snap-align: start;
+  min-height: 100vh; /* fallback */
+  min-height: 100svh;
+  padding-block: 0px;
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
