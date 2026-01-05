@@ -41,6 +41,18 @@ const sections = navLinks
   .map((a) => document.querySelector(a.getAttribute('href')))
   .filter(Boolean);
 
+for (const a of navLinks) {
+  a.addEventListener('click', () => {
+    if (!header) return;
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    header.classList.toggle('is-hidden', targetTop > window.scrollY);
+  });
+}
+
+
 function setActiveLink(id) {
   for (const a of navLinks)
     a.classList.toggle('is-active', a.getAttribute('href') === `#${id}`);
