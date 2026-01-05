@@ -5,8 +5,10 @@
   --color-accent: #ff7a00;
   --color-on-accent: #fff;
   --color-border: #ddd;
+  --color-bg-alt: #fafafa;
+
   /*Variable de offset del header*/
-  --header-offset: 70px;
+  --header-offset: 80px;
 }
 
 * {
@@ -21,12 +23,30 @@ html:has(.site-header.is-hidden) {
   scroll-padding-top: 0px;
 }
 
-
 body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
   line-height: 1.5;
 }
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 8px 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  transform: translateY(-200%);
+  transition: transform 140ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  z-index: 2000;
+}
+
 header {
   left: 0;
   right: 0;
@@ -53,23 +73,33 @@ header {
 .site-header.is-hidden {
   transform: translateY(-110%);
 }
+.site-header:hover {
+  transform: translateY(0);
+}
+.site-header:focus-within {
+  transform: translateY(0);
+}
+
 
 nav {
   display: flex;
   justify-content: center;
   gap: 12px;
+  align-items: center;
 }
 
 nav a {
   text-decoration: none;
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 4px;
   color: var(--color-text);
   transition: background-color 140ms ease, color 140ms ease;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 nav a:hover {
-  background: color-mix(in oklab, var(--color-accent) 12%, transparent);
+  background: color-mix(in oklab, var(--color-accent) 16%, transparent);
 }
 nav a:focus-visible {
   outline: 2px solid var(--color-text);
@@ -91,9 +121,19 @@ section {
   min-height: 100vh;
   min-height: 100dvh;
   padding-block: 0px;
-
   padding-top: 5px;
+  padding: 48px 30px;
+
 }
+
+section:nth-of-type(even) {
+  background: var(--color-bg-alt);
+  box-shadow: 0 0 0 100vmax var(--color-bg-alt);
+  clip-path: inset(0 -100vmax);
+}
+
+
+
 
 .header-inner {
   max-width: 1200px;
@@ -109,6 +149,10 @@ section {
 
 /*Preferencias de usuario*/
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   header {
     backdrop-filter: none;
   }
