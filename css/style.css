@@ -21,18 +21,18 @@ nav a {
   text-decoration: none;
 }
 main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 57px 16px;
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 57px;
   overflow-y: auto;
   scroll-snap-type: y proximity;
-  height: 100vh; /* fallback */
+  height: 100vh;
   height: 100svh;
   scroll-padding-top: 57px
 }
 section {
   scroll-snap-align: start;
-  min-height: 100vh; /* fallback */
+  min-height: 100vh;
   min-height: 100svh;
   padding-block: 0px;
 }
