@@ -50,7 +50,7 @@ h3 {
 body {
   margin: 0;
   font-family: system-ui, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   background: var(--color-bg);
   color: var(--color-text);
   font-size: 17px;
@@ -425,6 +425,7 @@ a:focus-visible {
   width: min(70ch, 100%);
   margin-inline: auto;
   text-align: left;
+  font-size: 1.05rem;
 }
 
 
