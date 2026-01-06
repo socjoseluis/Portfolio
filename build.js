@@ -47,3 +47,4 @@ if (existsSync("CNAME")) copyFileSync("CNAME", "dist/CNAME");
 
 
 console.log("OK: dist/index.html generado con header/footer");
+//
