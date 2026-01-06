@@ -6,6 +6,8 @@
   --color-on-accent: #fff;
   --color-border: #ddd;
   --color-bg-alt: #fafafa;
+  --color-footer-bg: #e9e9e9;
+
 
   /*Variable de offset del header*/
   --header-offset: 80px;
@@ -17,6 +19,8 @@
     --color-bg-alt: #1c1c20;
     --color-text: #f2f2f2;
     --color-border: #34343a;
+    --color-footer-bg: #0b0b0c;
+
   }
 }
 
@@ -31,6 +35,17 @@ html {
 html:has(.site-header.is-hidden) {
   scroll-padding-top: 0px;
 }
+
+h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
 
 body {
   margin: 0;
@@ -134,7 +149,11 @@ section {
   min-height: 100vh;
   min-height: 100dvh;
   padding-block: 0px;
-  padding: 56px clamp(16px, 4vw, 32px);
+  padding: 32px clamp(16px, 4vw, 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
 section + section {
   border-top: 1px solid
@@ -157,6 +176,7 @@ section ul {
 
 section h2 {
   margin: 0 0 24px;
+  text-align: center;
 }
 
 a {
@@ -177,9 +197,11 @@ a:focus-visible {
   gap: 12px;
   align-content: center;
   justify-items: start;
+  margin-inline: auto;
   max-width: 70ch;
   position: relative;
   isolation: isolate;
+  min-height: calc(100dvh - var(--header-offset));
 }
 #presentacion::before {
   content: "";
@@ -274,14 +296,22 @@ a:focus-visible {
   transition: border-color 140ms ease;
   overflow: hidden;
 }
-.project-card::before {
-  content: '';
+.media {
   display: block;
   aspect-ratio: 16 / 9;
   background: var(--color-bg-alt);
   border-radius: 8px;
   margin-bottom: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
 }
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .project-card:hover,
 .project-card:focus-within {
   border-color: color-mix(
@@ -292,7 +322,6 @@ a:focus-visible {
 }
 
 .project-card a {
-  margin-top: auto;
   color: var(--color-accent);
   text-decoration: none;
 }
@@ -306,6 +335,101 @@ a:focus-visible {
 .project-card p {
   margin: 0;
 }
+
+.project-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+}
+.project-actions a {
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text);
+  background: transparent;
+}
+.project-actions a:hover,
+.project-actions a:focus-visible {
+  background: color-mix(in oklab, var(--color-accent) 16%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-border));
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-footer-bg);
+  width: 100%;
+  padding: 40px 0;
+  color: var(--color-text);
+}
+
+.site-footer p {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 32px);
+  color: color-mix(in oklab, var(--color-text) 70%, transparent);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+#contacto p {
+  margin: 0 0 16px;
+}
+
+#contacto {
+  align-items: center;
+}
+
+#contacto .contact-links {
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--color-text);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  background: color-mix(in oklab, var(--color-accent) 16%, transparent);
+  border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-border));
+}
+@media (max-width: 480px) {
+  .contact-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+#sobre-mi p {
+  width: min(70ch, 100%);
+  margin-inline: auto;
+  text-align: left;
+}
+
+
+
+
 
 /*Preferencias de usuario*/
 @media (prefers-reduced-motion: reduce) {

@@ -36,31 +36,47 @@
       <section id="presentacion">
         <h1>Jose Luis</h1>
         <p>socjoseluis</p>
-        <p>Desarrollador web enfocado en calidad, accesibilidad y fundamentos de seguridad.</p>
+        <p>
+          Desarrollador web enfocado en calidad, accesibilidad y fundamentos de
+          seguridad.
+        </p>
 
         <a href="#sobre-mi">Más sobre mí</a>
       </section>
 
       <section id="proyectos">
         <h2>Proyectos</h2>
+
         <div class="projects">
           <!-- cards aquí -->
           <div class="project-card">
-            <h3>Proyecto 1</h3>
+            <div class="media" aria-hidden="true"></div>
+            <h3><a href="#">Proyecto 1</a></h3>
             <p>Descripción breve del proyecto 1.</p>
-            <a href="#">Ver más</a>
+            <div class="project-actions">
+              <a href="#">Detalles</a>
+            </div>
+
           </div>
 
           <div class="project-card">
+            <div class="media" aria-hidden="true">
+              <img src="assets/img/logo-jl.webp" alt="" />
+            </div>
             <h3>Proyecto 2</h3>
             <p>Descripción breve del proyecto 2.</p>
-            <a href="#">Ver más</a>
+            <div class="project-actions">
+              <a href="#">Detalles</a>
+            </div>
           </div>
 
           <div class="project-card">
+            <div class="media" aria-hidden="true"></div>
             <h3>Proyecto 3</h3>
             <p>Descripción breve del proyecto 3.</p>
-            <a href="#">Ver más</a>
+            <div class="project-actions">
+              <a href="#">Detalles</a>
+            </div>
           </div>
         </div>
       </section>
@@ -81,7 +97,9 @@
 
       <section id="contacto">
         <h2>Contacto</h2>
-        <ul>
+        <p>¿Hablamos? Puedes escribirme o ver mi trabajo en estos enlaces.</p>
+
+        <ul class="contact-links">
           <li>
             <a
               href="https://github.com/socjoseluis"
@@ -103,6 +121,11 @@
         </ul>
       </section>
     </main>
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Jose Luis · <a href="mailto:cv@socjoseluis.com">cv@socjoseluis.com</a></p>
+
+    </footer>
+
 
     <script src="js/main.js"></script>
   </body>
