@@ -38,6 +38,7 @@ header {
   margin: 0 auto;
   padding: 0 10px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 12px;
@@ -74,3 +75,28 @@ nav a.is-active {
   background: var(--color-accent);
   color: var(--color-on-accent);
 }
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .brand { position: static; }
+  .nav-toggle { display: inline-flex; }
+  .nav-links { display: none; }
+  .nav-toggle[aria-expanded="true"] + .nav-links { display: flex; }
+}
+

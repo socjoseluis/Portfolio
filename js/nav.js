@@ -6,6 +6,24 @@ export function initNav(header) {
     .map((a) => document.querySelector(a.getAttribute('href')))
     .filter(Boolean);
   if (!navLinks.length || !sections.length) return;
+  const navToggle = document.querySelector('header nav .nav-toggle');
+  const navList = document.getElementById('nav-links');
+
+  if (navToggle && navList) {
+    function setExpanded(expanded) {
+      navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      if (expanded) header?.classList.remove('is-hidden');
+    }
+
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      setExpanded(!expanded);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setExpanded(false);
+    });
+  }
 
   for (const a of navLinks) {
     a.addEventListener('click', () => {
