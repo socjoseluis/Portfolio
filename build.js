@@ -1,4 +1,3 @@
-
 import {
   mkdirSync,
   readFileSync,
@@ -7,14 +6,12 @@ import {
   copyFileSync,
   existsSync,
   rmSync,
-} from "node:fs";
-
-
+} from 'node:fs';
 
 function replaceBlock(html, name, replacement) {
   const re = new RegExp(
     `<!-- BUILD:${name} -->[\\s\\S]*?<!-- \\/BUILD:${name} -->`,
-    "g"
+    'g'
   );
 
   const next = html.replace(
@@ -27,27 +24,26 @@ function replaceBlock(html, name, replacement) {
   }
   return next;
 }
-rmSync("dist", { recursive: true, force: true });
+rmSync('dist', { recursive: true, force: true });
 
-mkdirSync("dist", { recursive: true });
+mkdirSync('dist', { recursive: true });
 
-const indexHtml = readFileSync("index.html", "utf8");
-const headerHtml = readFileSync("partials/header.html", "utf8").trim();
-const footerHtml = readFileSync("partials/footer.html", "utf8").trim();
+const indexHtml = readFileSync('index.html', 'utf8');
+const headerHtml = readFileSync('partials/header.html', 'utf8').trim();
+const footerHtml = readFileSync('partials/footer.html', 'utf8').trim();
 
 let out = indexHtml;
-out = replaceBlock(out, "HEADER", headerHtml);
-out = replaceBlock(out, "FOOTER", footerHtml);
+out = replaceBlock(out, 'HEADER', headerHtml);
+out = replaceBlock(out, 'FOOTER', footerHtml);
 
-writeFileSync("dist/index.html", out, "utf8");
-cpSync("css", "dist/css", { recursive: true });
-cpSync("js", "dist/js", { recursive: true });
-cpSync("assets", "dist/assets", { recursive: true });
+writeFileSync('dist/index.html', out, 'utf8');
+cpSync('css', 'dist/css', { recursive: true });
+cpSync('js', 'dist/js', { recursive: true });
+cpSync('assets', 'dist/assets', { recursive: true });
 
-if (existsSync("CNAME")) copyFileSync("CNAME", "dist/CNAME");
+cpSync('partials', 'dist/partials', { recursive: true });
 
+if (existsSync('CNAME')) copyFileSync('CNAME', 'dist/CNAME');
 
-
-
-console.log("OK: dist/index.html generado con header/footer");
+console.log('OK: dist/index.html generado con header/footer');
 //

@@ -1,3 +1,5 @@
+@import url('./header.css');
+
 /*Variables de color*/
 :root {
   --color-bg: #fff;
@@ -7,7 +9,6 @@
   --color-border: #ddd;
   --color-bg-alt: #fafafa;
   --color-footer-bg: #e9e9e9;
-
 
   /*Variable de offset del header*/
   --header-offset: 80px;
@@ -20,9 +21,10 @@
     --color-text: #f2f2f2;
     --color-border: #34343a;
     --color-footer-bg: #0b0b0c;
-
   }
 }
+
+/* ===== Base / Reset ===== */
 
 * {
   box-sizing: border-box;
@@ -45,7 +47,6 @@ h3 {
   font-size: 1.1rem;
   letter-spacing: -0.01em;
 }
-
 
 body {
   margin: 0;
@@ -75,69 +76,7 @@ body {
   z-index: 2000;
 }
 
-header {
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid var(--color-border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: color-mix(in oklab, var(--color-bg) 92%, transparent);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-@supports (backdrop-filter: blur(8px)) {
-  header {
-    backdrop-filter: blur(8px);
-  }
-}
-
-.site-header {
-  transition: transform 180ms ease;
-  will-change: transform;
-}
-
-.site-header.is-hidden {
-  transform: translateY(-110%);
-}
-.site-header:hover {
-  transform: translateY(0);
-}
-.site-header:focus-within {
-  transform: translateY(0);
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  align-items: center;
-}
-
-nav a {
-  text-decoration: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  color: var(--color-text);
-  transition: background-color 140ms ease, color 140ms ease;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-nav a:hover {
-  background: color-mix(in oklab, var(--color-accent) 28%, transparent);
-}
-
-nav a:focus-visible {
-  outline: 2px solid var(--color-text);
-  outline-offset: 4px;
-  background: color-mix(in oklab, var(--color-accent) 18%, transparent);
-}
-nav a.is-active {
-  background: var(--color-accent);
-  color: var(--color-on-accent);
-}
+/* ===== Layout / Sections ===== */
 
 main {
   max-width: 1200px;
@@ -153,7 +92,6 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 section + section {
   border-top: 1px solid
@@ -204,7 +142,7 @@ a:focus-visible {
   min-height: calc(100dvh - var(--header-offset));
 }
 #presentacion::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -219,7 +157,6 @@ a:focus-visible {
   pointer-events: none;
   z-index: -1;
 }
-
 
 #presentacion h1 {
   margin: 0;
@@ -250,17 +187,6 @@ a:focus-visible {
   font-size: 0.95rem;
 }
 
-.header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  position: relative;
-}
-
 .brand {
   position: absolute;
   left: 10px;
@@ -284,6 +210,8 @@ a:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
 }
+
+/* ===== Components (Cards, Contact) ===== */
 
 .project-card {
   border: 1px solid var(--color-border);
@@ -351,8 +279,14 @@ a:focus-visible {
 .project-actions a:hover,
 .project-actions a:focus-visible {
   background: color-mix(in oklab, var(--color-accent) 16%, transparent);
-  border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-border));
+  border-color: color-mix(
+    in oklab,
+    var(--color-accent) 40%,
+    var(--color-border)
+  );
 }
+
+/* ===== Footer ===== */
 
 .site-footer {
   border-top: 1px solid var(--color-border);
@@ -384,9 +318,6 @@ a:focus-visible {
   text-align: center;
 }
 
-
-
-
 .contact-links {
   list-style: none;
   padding: 0;
@@ -412,7 +343,11 @@ a:focus-visible {
 .contact-links a:hover,
 .contact-links a:focus-visible {
   background: color-mix(in oklab, var(--color-accent) 16%, transparent);
-  border-color: color-mix(in oklab, var(--color-accent) 40%, var(--color-border));
+  border-color: color-mix(
+    in oklab,
+    var(--color-accent) 40%,
+    var(--color-border)
+  );
 }
 @media (max-width: 480px) {
   .contact-links {
@@ -427,10 +362,6 @@ a:focus-visible {
   text-align: left;
   font-size: 1.05rem;
 }
-
-
-
-
 
 /*Preferencias de usuario*/
 @media (prefers-reduced-motion: reduce) {
