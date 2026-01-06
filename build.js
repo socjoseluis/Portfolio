@@ -6,7 +6,9 @@ import {
   cpSync,
   copyFileSync,
   existsSync,
+  rmSync,
 } from "node:fs";
+
 
 
 function replaceBlock(html, name, replacement) {
@@ -25,6 +27,7 @@ function replaceBlock(html, name, replacement) {
   }
   return next;
 }
+rmSync("dist", { recursive: true, force: true });
 
 mkdirSync("dist", { recursive: true });
 
