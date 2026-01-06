@@ -78,7 +78,6 @@ header {
   }
 }
 
-
 .site-header {
   transition: transform 180ms ease;
   will-change: transform;
@@ -176,9 +175,29 @@ a:focus-visible {
 #presentacion {
   display: grid;
   gap: 12px;
-  align-content: start;
+  align-content: center;
   justify-items: start;
+  max-width: 70ch;
+  position: relative;
+  isolation: isolate;
 }
+#presentacion::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    60% 60% at 20% 20%,
+    color-mix(in oklab, var(--color-accent) 18%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
 
 #presentacion h1 {
   margin: 0;
@@ -237,7 +256,6 @@ a:focus-visible {
   outline-offset: 4px;
   border-radius: 999px;
 }
-
 
 .projects {
   display: grid;
