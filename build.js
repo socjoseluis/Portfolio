@@ -44,6 +44,8 @@ cpSync('assets', 'dist/assets', { recursive: true });
 cpSync('partials', 'dist/partials', { recursive: true });
 
 if (existsSync('CNAME')) copyFileSync('CNAME', 'dist/CNAME');
+if (existsSync('.well-known'))
+  cpSync('.well-known', 'dist/.well-known', { recursive: true });
 
 console.log('OK: dist/index.html generado con header/footer');
 //
